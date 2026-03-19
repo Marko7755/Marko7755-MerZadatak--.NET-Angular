@@ -1,5 +1,12 @@
 # Marko7755-MerZadatak--.NET-Angula
 
+Svrha ovog projekta je napraviti user-friendly aplikaciju koja može učinkovito podnijeti veći broj korisnika(npr. 100 000).
+
+
+**Scenario:** You are building a module for a company that manages a large customer database (500,000+ records).
+The system needs to handle bulk operations efficiently. Your job is to build a small but functional proof-of-concept.
+
+
 Pokretanje projekta:
 1. Kloniranje repozitorija
 git clone https://github.com/Marko7755/Marko7755-MerZadatak--.NET-Angula.git

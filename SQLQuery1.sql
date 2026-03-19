@@ -48,3 +48,7 @@ SELECT DATABASEPROPERTYEX(DB_NAME(), 'Collation') AS DatabaseCollation;
 SELECT TOP 10 *
 FROM Customers
 WHERE FirstName LIKE 'marko%' OR LastName LIKE 'marko%'
+
+delete
+from dbo.Customers
+where country = 'string'
