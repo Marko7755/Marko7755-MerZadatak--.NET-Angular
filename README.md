@@ -1,33 +1,28 @@
-# Marko7755-MerZadatak--.NET-Angula
 
 Svrha ovog projekta je napraviti user-friendly aplikaciju koja može učinkovito podnijeti veći broj korisnika(npr. 100 000).
 
 
-**Scenario:** You are building a module for a company that manages a large customer database (500,000+ records).
-The system needs to handle bulk operations efficiently. Your job is to build a small but functional proof-of-concept.
-
-
 Pokretanje projekta:
-1. Kloniranje repozitorija
+1. Kloniranje repozitorija ->
 git clone https://github.com/Marko7755/Marko7755-MerZadatak--.NET-Angula.git
 cd Marko7755-MerZadatak--.NET-Angula
 
-2. Pokretanje backenda
+2. Pokretanje backenda ->
 cd backend
 dotnet restore
 dotnet ef database update
 dotnet run
 
-3. Pokretanje frontenda
+3. Pokretanje frontenda ->
 cd frontend/mer_zadatak
 npm install
 ng serve
 
-4. Pokretanje aplikacije
+4. Pokretanje aplikacije ->
 otvoriti "http://localhost:4200" u pregledniku
 
 
-Napomene
+Napomene ->
  Provjeriti da je SQL Server pokrenut
  Baza se automatski kreira pomoću migracija
 Connection string može se promijeniti u appsettings.json
