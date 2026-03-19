@@ -10,7 +10,7 @@
         <form #customerForm="ngForm" class="customer-form" (ngSubmit)="onSubmit(customerForm)">
             <div class="form-grid">
 
-                <!-- First Name -->
+               
                 <div class="form-group">
                     <label for="firstName">First Name</label>
                     <input id="firstName" name="firstName" type="text" class="form-input"
@@ -29,7 +29,7 @@
                     }
                 </div>
 
-                <!-- Last Name -->
+           
                 <div class="form-group">
                     <label for="lastName">Last Name</label>
                     <input id="lastName" name="lastName" type="text" class="form-input" [(ngModel)]="customer.lastName"
@@ -47,7 +47,7 @@
                     }
                 </div>
 
-                <!-- Email -->
+                
                 <div class="form-group form-group-full">
                     <label for="email">Email</label>
                     <input id="email" name="email" type="email" class="form-input" [(ngModel)]="customer.email"
