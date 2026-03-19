@@ -1,0 +1,57 @@
+<div class="stats-page">
+  <div class="stats-header">
+    <div class="stats-header-text">
+      <h1>Customers Stats</h1>
+      <p>Overview of customer activity and top cities</p>
+    </div>
+
+    <a routerLink="" class="back-link-btn">
+      Back to customers
+    </a>
+  </div>
+
+  <div class="stats-cards">
+    <div class="stats-card total">
+      <span class="card-label">Total customers</span>
+      <strong class="card-value">{{ stats.totalCount }}</strong>
+    </div>
+
+    <div class="stats-card active">
+      <span class="card-label">Active customers</span>
+      <strong class="card-value">{{ stats.activeCount }}</strong>
+    </div>
+
+    <div class="stats-card inactive">
+      <span class="card-label">Inactive customers</span>
+      <strong class="card-value">{{ stats.inactiveCount }}</strong>
+    </div>
+  </div>
+
+  <div class="stats-section">
+    <div class="section-header">
+      <h2>Top 5 cities</h2>
+      <span class="section-subtitle">Ranked by number of customers</span>
+    </div>
+
+    @if (stats.top5Cities.length > 0) {
+      <div class="cities-list">
+        @for (cityStat of stats.top5Cities; track cityStat.city; let i = $index) {
+          <div class="city-item">
+            <div class="city-rank">
+              #{{ i + 1 }}
+            </div>
+
+            <div class="city-details">
+              <span class="city-name">{{ cityStat.city }}</span>
+              <span class="city-count">{{ cityStat.count }} customers</span>
+            </div>
+          </div>
+        }
+      </div>
+    } @else {
+      <div class="empty-state">
+        No city statistics available.
+      </div>
+    }
+  </div>
+</div>

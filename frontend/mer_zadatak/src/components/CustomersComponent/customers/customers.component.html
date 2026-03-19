@@ -1,0 +1,196 @@
+<div class="customers-page">
+  <div class="customers-header">
+    <div class="header-title">
+      <h1>Customers</h1>
+    </div>
+
+    <div class="header-actions">
+      <a routerLink="/createCustomer" class="create-link-btn">
+        + Create Customer
+      </a>
+
+      <a routerLink="/customerStats" class="stats-link-btn">
+        View Stats Dashboard
+      </a>
+
+      <div class="total-records">
+        <span>Total records:</span>
+        <strong>{{ totalCount }}</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="filters-bar">
+    <div class="filter-group">
+      <label for="nameFilter" class="filter-label">Name</label>
+      <input id="nameFilter" type="text" class="search-input" placeholder="Search by name..."
+        [formControl]="nameSearchControl" />
+    </div>
+
+    <div class="filter-group">
+      <label for="countryFilter" class="filter-label">Country</label>
+      <select id="countryFilter" class="country-select" [formControl]="countrySearchControl">
+        <option [ngValue]="null">All countries</option>
+        @for (country of allCountries; track $index) {
+        <option [value]="country">{{ country }}</option>
+        }
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label for="isActiveFilter" class="filter-label">Status</label>
+      <select id="isActiveFilter" class="is-active-select" [formControl]="isActiveSearchControl">
+        <option [ngValue]="null">All statuses</option>
+        <option [ngValue]="true">Active</option>
+        <option [ngValue]="false">Inactive</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="bulk-toolbar">
+    <div class="bulk-info">
+      <span class="bulk-title">Bulk actions</span>
+      <span class="bulk-selected">
+        Selected: <strong>{{ selectedIds.size }}</strong>
+      </span>
+    </div>
+
+    <div class="bulk-actions">
+      <button type="button" class="action-btn activate bulk-btn" (click)="bulkActivateCustomers()"
+        [disabled]="isBulkActivateDisabled">
+        Activate selected
+      </button>
+
+      <button type="button" class="action-btn deactivate bulk-btn" (click)="bulkDeactivateCustomers()"
+        [disabled]="isBulkDiactivateDisabled">
+        Deactivate selected
+      </button>
+    </div>
+  </div>
+
+  <div class="table-card">
+    <div class="table-responsive">
+      <table class="customers-table">
+        <thead>
+          <tr>
+            <th class="checkbox-column">
+              <input type="checkbox" [checked]="isAllSelected()" (change)="toggleSelectAll($event)" />
+            </th>
+
+            <th (click)="sort('firstname')" class="sortable">
+              First Name {{ getSortIcon('firstname') }}
+            </th>
+
+            <th (click)="sort('lastname')" class="sortable">
+              Last Name {{ getSortIcon('lastname') }}
+            </th>
+
+            <th (click)="sort('email')" class="sortable">
+              Email {{ getSortIcon('email') }}
+            </th>
+
+            <th (click)="sort('city')" class="sortable">
+              City {{ getSortIcon('city') }}
+            </th>
+
+            <th (click)="sort('country')" class="sortable">
+              Country {{ getSortIcon('country') }}
+            </th>
+
+            <th (click)="sort('isactive')" class="sortable">
+              Status {{ getSortIcon('isactive') }}
+            </th>
+
+            <th class="actions-column">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          @if (customers.length > 0) {
+          @for (customer of customers; track customer.id) {
+          <tr (click)="editCustomer(customer.id)" class="clickable-row">
+            <td class="checkbox-cell" data-label="Select">
+              <input type="checkbox" (change)="toggleCheckedItem(customer.id)" [checked]="isItemSelected(customer.id)"
+                (click)="$event.stopPropagation()" />
+            </td>
+
+            <td data-label="First Name">{{ customer.firstName }}</td>
+            <td data-label="Last Name">{{ customer.lastName }}</td>
+            <td data-label="Email">{{ customer.email }}</td>
+            <td data-label="City">{{ customer.city }}</td>
+            <td data-label="Country">{{ customer.country }}</td>
+
+            <td data-label="Status">
+              <span class="status-badge" [class.active]="customer.isActive" [class.inactive]="!customer.isActive">
+                {{ customer.isActive ? 'Active' : 'Inactive' }}
+              </span>
+            </td>
+
+            <td data-label="Actions" class="actions-cell">
+              <div class="row-actions">
+                <button type="button" class="action-btn activate"
+                  (click)="activateCustomer(customer.id); $event.stopPropagation()" [disabled]="customer.isActive">
+                  Activate
+                </button>
+
+                <button type="button" class="action-btn deactivate"
+                  (click)="deactivateCustomer(customer.id); $event.stopPropagation()" [disabled]="!customer.isActive">
+                  Deactivate
+                </button>
+
+                <button type="button" class="action-btn edit"
+                  (click)="editCustomer(customer.id); $event.stopPropagation()">
+                  Edit
+                </button>
+              </div>
+            </td>
+          </tr>
+          }
+          } @else {
+          <tr>
+            <td colspan="8">
+              <div class="empty-state">
+                No customers found.
+              </div>
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    @if (totalPages > 0) {
+    <div class="pagination-wrapper">
+      <div class="pagination-info">
+        Page <strong>{{ pageNumber }}</strong> of <strong>{{ totalPages }}</strong>
+      </div>
+
+      <div class="pagination-controls">
+        <button type="button" class="pagination-btn" (click)="goToPage(1)" [disabled]="pageNumber === 1">
+          First
+        </button>
+
+        <button type="button" class="pagination-btn" (click)="previousPage()" [disabled]="pageNumber === 1">
+          Previous
+        </button>
+
+        @for (page of pages; track page) {
+        <button type="button" class="pagination-btn page-number" [class.active]="page === pageNumber"
+          (click)="goToPage(page)">
+          {{ page }}
+        </button>
+        }
+
+        <button type="button" class="pagination-btn" (click)="nextPage()" [disabled]="pageNumber === totalPages">
+          Next
+        </button>
+
+        <button type="button" class="pagination-btn" (click)="goToPage(totalPages)"
+          [disabled]="pageNumber === totalPages">
+          Last
+        </button>
+      </div>
+    </div>
+    }
+  </div>
+</div>

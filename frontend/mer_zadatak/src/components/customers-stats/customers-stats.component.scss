@@ -1,0 +1,281 @@
+:host {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.stats-page {
+  width: 100%;
+  min-height: 100vh;
+  padding: 24px;
+  background: #f8fafc;
+}
+
+.stats-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.stats-header-text {
+  h1 {
+    margin: 0;
+    font-size: 30px;
+    font-weight: 700;
+    color: #1e293b;
+    line-height: 1.2;
+  }
+
+  p {
+    margin: 8px 0 0;
+    font-size: 14px;
+    color: #64748b;
+  }
+}
+
+.back-link-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0 18px;
+  border-radius: 12px;
+  border: 1px solid #2563eb;
+  background: #ffffff;
+  color: #2563eb;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    background: #eff6ff;
+    border-color: #1d4ed8;
+    color: #1d4ed8;
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+.stats-cards {
+  display: flex;
+  gap: 18px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.stats-card {
+  flex: 1 1 240px;
+  min-height: 140px;
+  padding: 22px;
+  border-radius: 18px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &.total {
+    border-left: 6px solid #2563eb;
+  }
+
+  &.active {
+    border-left: 6px solid #16a34a;
+  }
+
+  &.inactive {
+    border-left: 6px solid #dc2626;
+  }
+}
+
+.card-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #64748b;
+}
+
+.card-value {
+  font-size: 38px;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1;
+}
+
+.stats-section {
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+  overflow: hidden;
+}
+
+.section-header {
+  padding: 22px 24px;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+
+  h2 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+    color: #1e293b;
+  }
+}
+
+.section-subtitle {
+  font-size: 14px;
+  color: #64748b;
+}
+
+.cities-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.city-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 24px;
+  border-bottom: 1px solid #e2e8f0;
+  transition: background 0.2s ease;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background: #f8fafc;
+  }
+}
+
+.city-rank {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #eff6ff;
+  color: #2563eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.city-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.city-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.city-count {
+  font-size: 14px;
+  font-weight: 600;
+  color: #475569;
+  background: #f1f5f9;
+  padding: 6px 12px;
+  border-radius: 999px;
+}
+
+.empty-state {
+  padding: 36px 24px;
+  text-align: center;
+  color: #64748b;
+  font-size: 15px;
+}
+
+@media (max-width: 768px) {
+  .stats-page {
+    padding: 16px;
+  }
+
+  .stats-header {
+    align-items: stretch;
+  }
+
+  .back-link-btn {
+    width: 100%;
+  }
+
+  .stats-cards {
+    gap: 14px;
+  }
+
+  .stats-card {
+    min-height: 120px;
+    padding: 18px;
+  }
+
+  .card-value {
+    font-size: 32px;
+  }
+
+  .section-header {
+    padding: 18px;
+  }
+
+  .city-item {
+    padding: 16px 18px;
+  }
+
+  .city-details {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-page {
+    padding: 12px;
+  }
+
+  .stats-header-text h1 {
+    font-size: 24px;
+  }
+
+  .card-value {
+    font-size: 28px;
+  }
+
+  .city-rank {
+    width: 40px;
+    height: 40px;
+    font-size: 13px;
+  }
+
+  .city-name {
+    font-size: 15px;
+  }
+
+  .city-count {
+    font-size: 13px;
+  }
+}

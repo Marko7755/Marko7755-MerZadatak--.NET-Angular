@@ -1,0 +1,129 @@
+<div class="customer-create-page">
+    <div class="customer-create-card">
+        <div class="customer-create-header">
+            <div>
+                <h1>Create Customer</h1>
+                <p>Enter customer details</p>
+            </div>
+        </div>
+
+        <form #customerForm="ngForm" class="customer-form" (ngSubmit)="onSubmit(customerForm)">
+            <div class="form-grid">
+
+                <!-- First Name -->
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input id="firstName" name="firstName" type="text" class="form-input"
+                        [(ngModel)]="customer.firstName" #firstName="ngModel" required minlength="2" maxlength="100"
+                        placeholder="Enter first name" />
+
+                    @if (firstName.invalid && firstName.touched) {
+                    <div class="validation-error">
+                        @if (firstName.errors?.['required']) {
+                        <span>First name is required.</span>
+                        }
+                        @if (firstName.errors?.['minlength']) {
+                        <span>First name must be at least 2 characters.</span>
+                        }
+                    </div>
+                    }
+                </div>
+
+                <!-- Last Name -->
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input id="lastName" name="lastName" type="text" class="form-input" [(ngModel)]="customer.lastName"
+                        #lastName="ngModel" required minlength="2" maxlength="100" placeholder="Enter last name" />
+
+                    @if (lastName.invalid && lastName.touched) {
+                    <div class="validation-error">
+                        @if (lastName.errors?.['required']) {
+                        <span>Last name is required.</span>
+                        }
+                        @if (lastName.errors?.['minlength']) {
+                        <span>Last name must be at least 2 characters.</span>
+                        }
+                    </div>
+                    }
+                </div>
+
+                <!-- Email -->
+                <div class="form-group form-group-full">
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="email" class="form-input" [(ngModel)]="customer.email"
+                        #email="ngModel" required email maxlength="255" placeholder="Enter email address" />
+
+                    @if (email.invalid && email.touched) {
+                    <div class="validation-error">
+                        @if (email.errors?.['required']) {
+                        <span>Email is required.</span>
+                        }
+                        @if (email.errors?.['email']) {
+                        <span>Please enter a valid email address.</span>
+                        }
+                    </div>
+                    }
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input id="phone" name="phone" type="text" class="form-input" [(ngModel)]="customer.phone"
+                        #phone="ngModel" minlength="7" maxlength="50" placeholder="Enter phone number" />
+
+                    @if (phone.invalid && phone.touched && customer.phone) {
+                    <div class="validation-error">
+                        @if (phone.errors?.['minlength']) {
+                        <span>Phone must be at least 7 characters.</span>
+                        }
+                    </div>
+                    }
+                </div>
+
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <input id="city" name="city" type="text" class="form-input" [(ngModel)]="customer.city"
+                        #city="ngModel" required minlength="2" maxlength="100" placeholder="Enter city" />
+
+                    @if (city.invalid && city.touched) {
+                    <div class="validation-error">
+                        @if (city.errors?.['required']) {
+                        <span>City is required.</span>
+                        }
+                        @if (city.errors?.['minlength']) {
+                        <span>City must be at least 2 characters.</span>
+                        }
+                    </div>
+                    }
+                </div>
+
+                <div class="form-group">
+                    <label for="country">Country</label>
+                    <input id="country" name="country" type="text" class="form-input" [(ngModel)]="customer.country"
+                        #country="ngModel" required minlength="2" maxlength="100" placeholder="Enter country" />
+
+                    @if (country.invalid && country.touched) {
+                    <div class="validation-error">
+                        @if (country.errors?.['required']) {
+                        <span>Country is required.</span>
+                        }
+                        @if (country.errors?.['minlength']) {
+                        <span>Country must be at least 2 characters.</span>
+                        }
+                    </div>
+                    }
+                </div>
+
+            </div>
+
+            <div class="form-actions">
+                <button type="button" class="btn btn-secondary" (click)="onCancel()">
+                    Cancel
+                </button>
+
+                <button type="submit" class="btn btn-primary" [disabled]="customerForm.invalid">
+                    Create Customer
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
