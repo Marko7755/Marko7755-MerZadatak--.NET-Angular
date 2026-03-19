@@ -14,8 +14,8 @@ dotnet ef database update ->
 dotnet run
 
 3. Pokretanje frontenda --
-cd frontend/mer_zadatak
-npm install
+cd frontend/mer_zadatak -> 
+npm install ->
 ng serve
 
 4. Pokretanje aplikacije --
