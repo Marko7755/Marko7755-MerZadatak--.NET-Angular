@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MER_zadatak")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+745a203e0e335fc3d3af97a023d37174cd3876dc")]
 [assembly: System.Reflection.AssemblyProductAttribute("MER_zadatak")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MER_zadatak")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
