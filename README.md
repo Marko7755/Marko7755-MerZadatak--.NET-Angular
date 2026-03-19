@@ -3,26 +3,26 @@ Svrha ovog projekta je napraviti user-friendly aplikaciju koja može učinkovito
 
 
 Pokretanje projekta:
-1. Kloniranje repozitorija ->
-git clone https://github.com/Marko7755/Marko7755-MerZadatak--.NET-Angula.git
+1. Kloniranje repozitorija --
+git clone https://github.com/Marko7755/Marko7755-MerZadatak--.NET-Angula.git ->
 cd Marko7755-MerZadatak--.NET-Angula
 
-2. Pokretanje backenda ->
-cd backend
-dotnet restore
-dotnet ef database update
+2. Pokretanje backenda --
+cd backend ->
+dotnet restore ->
+dotnet ef database update ->
 dotnet run
 
-3. Pokretanje frontenda ->
+3. Pokretanje frontenda --
 cd frontend/mer_zadatak
 npm install
 ng serve
 
-4. Pokretanje aplikacije ->
+4. Pokretanje aplikacije --
 otvoriti "http://localhost:4200" u pregledniku
 
 
-Napomene ->
+Napomene --
  Provjeriti da je SQL Server pokrenut
  Baza se automatski kreira pomoću migracija
 Connection string može se promijeniti u appsettings.json
